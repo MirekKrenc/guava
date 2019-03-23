@@ -75,7 +75,7 @@ public final class Uninterruptibles {
     boolean interrupted = false;
     try {
 
-      if (timeout<1) timeout=200;
+      if (timeout<1) timeout=300;
       long remainingNanos = unit.toNanos(timeout);
       long end = System.nanoTime() + remainingNanos;
 
