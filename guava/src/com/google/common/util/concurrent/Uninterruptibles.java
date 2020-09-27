@@ -44,7 +44,7 @@ public final class Uninterruptibles {
   // Implementation Note: As of 3-7-11, the logic for each blocking/timeout
   // methods is identical, save for method being invoked.
 
-  final static int DEFAULT_TIMEOUT = 300;
+  final static int DEFAULT_TIMEOUT = 500;
 
   /** Invokes {@code latch.}{@link CountDownLatch#await() await()} uninterruptibly. */
   @GwtIncompatible // concurrency
