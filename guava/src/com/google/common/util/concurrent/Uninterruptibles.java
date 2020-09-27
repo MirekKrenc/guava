@@ -44,6 +44,8 @@ public final class Uninterruptibles {
   // Implementation Note: As of 3-7-11, the logic for each blocking/timeout
   // methods is identical, save for method being invoked.
 
+  final static int DEFAULT_TIMEOUT = 1;
+
   /** Invokes {@code latch.}{@link CountDownLatch#await() await()} uninterruptibly. */
   @GwtIncompatible // concurrency
   public static void awaitUninterruptibly(CountDownLatch latch) {
@@ -74,6 +76,9 @@ public final class Uninterruptibles {
   public static boolean awaitUninterruptibly(CountDownLatch latch, long timeout, TimeUnit unit) {
     boolean interrupted = false;
     try {
+      if (timeout<1) {
+         timeout = DEFAULT_TIMEOUT;
+      }
       long remainingNanos = unit.toNanos(timeout);
       long end = System.nanoTime() + remainingNanos;
 
